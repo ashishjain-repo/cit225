@@ -154,7 +154,7 @@ SELECT co.country_id
 FROM country co
 WHERE co.country LIKE 'S%o%a'; */
 
-/* SELECT c.city_id as 'id'
+SELECT c.city_id as 'id'
 , c.city as name
 FROM city c
 WHERE c.city LIKE 'S%o%a'
@@ -163,7 +163,7 @@ SELECT co.country_id
 , co.country
 FROM country co
 WHERE co.country LIKE 'S%o%a'
-ORDER BY name desc; */
+ORDER BY name desc;
 
 /* SELECT a.first_name as first_name
 , a.last_name as last_name
@@ -205,7 +205,7 @@ ON fa.film_id = f.film_id
 WHERE a.last_name LIKE 'W%' AND f.title LIKE 'LIFE%'
 ORDER BY last_name ASC; */
 
-/* SELECT first_name
+SELECT first_name
 , last_name
 FROM customer
 WHERE last_name LIKE 'D%'
@@ -213,7 +213,7 @@ EXCEPT
 SELECT first_name
 , last_name
 FROM customer
-WHERE last_name LIKE 'DI%'; */
+WHERE last_name LIKE 'DI%';
 
 /* SELECT 1 num, 'one' str
 UNION
@@ -242,10 +242,10 @@ ORDER BY 1, 2; */
              FROM   customer
              WHERE  last_name LIKE 'DI%'); */
 
-SELECT 1 num, 'one' str
+/* SELECT 1 num, 'one' str
 UNION
 SELECT 2 num, 'two' str
 UNION
 SELECT 3 num, 'three' str
 UNION
-SELECT 2 num, 'two' str;
+SELECT 2 num, 'two' str; */
