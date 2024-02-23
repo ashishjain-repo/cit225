@@ -120,14 +120,13 @@ SELECT CAST('999ABC111' AS UNSIGNED INTEGER); */
 
 -- Exercises:-
 
-/* SELECT SUBSTRING('Please find the substring in this string',17,9) string;
-
-SELECT ABS(-25.76823), SIGN(-25.76823), ROUND(-25.76823,2);
-
-SELECT EXTRACT(MONTH FROM CURRENT_DATE()); */
-
-
--- SELECT EXTRACT(DAY FROM CURRENT_DATE());
-
-SELECT CAST('07-DEC-2016' AS DATE) AS newdate;
-
+-- 1.
+-- SELECT SUBSTRING('Please find the substring in this string',17,9) string;
+-- 2.
+-- SELECT ABS(-25.76823), SIGN(-25.76823), ROUND(-25.76823,2);
+-- 3.
+-- SELECT EXTRACT(MONTH FROM CURRENT_DATE());
+-- 4.
+-- SET @string = 'Sorcerer''s Stone';
+-- 5.
+-- SELECT DATE_FORMAT(STR_TO_DATE(@string, '%d-%b-%Y'),'%Y-%m-%d') AS formatted;
