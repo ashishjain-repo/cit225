@@ -82,3 +82,14 @@ WHERE f.title LIKE 'C%'
 GROUP BY f.title, f.rating
 HAVING (count(*) > 2)
 ORDER BY f.title ASC; */
+
+/* SELECT SUBSTR(last_name,1,1) AS first_letter, COUNT(last_name)
+FROM customer
+WHERE substr(last_name,1,1) = 'M'
+GROUP BY SUBSTR(last_name,1,1); */
+
+/* SELECT MAX(datediff(return_date, rental_date)) AS maximum_period
+FROM rental; */
+
+/* SELECT COUNT(middle_name), COUNT(DISTINCT middle_name)
+FROM customer; */
