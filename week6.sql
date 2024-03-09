@@ -130,3 +130,17 @@ SELECT CAST('999ABC111' AS UNSIGNED INTEGER); */
 -- SET @string = 'Sorcerer''s Stone';
 -- 5.
 -- SELECT DATE_FORMAT(STR_TO_DATE(@string, '%d-%b-%Y'),'%Y-%m-%d') AS formatted;
+
+-- Homework
+-- 1
+SELECT SUBSTRING('Please find the substring in this string',17,9) parsed;
+-- 2
+SELECT ABS(-25.76823) AS 'abs', SIGN(-25.76823) AS 'sign', ROUND(-25.76823,2) AS 'round';
+-- 3
+SELECT EXTRACT(MONTH FROM CURRENT_DATE()) AS 'month';
+-- 4
+SET @string = 'Sorcerer''s Stone';
+SELECT @string AS 'title';
+-- 5
+SET @string := '29-FEB-2024';
+SELECT DATE_FORMAT(STR_TO_DATE(@string, '%d-%b-%Y'),'%Y-%m-%d') AS 'date' AS 'date';
