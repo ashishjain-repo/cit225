@@ -21,12 +21,12 @@ use sakila;
  FROM rental
  WHERE rental_date BETWEEN '2005-05-01' AND '2005-08-01'
  GROUP BY monthname(rental_date); */
-SELECT
+/* SELECT
     SUM(IF(monthname(rental_date) = 'May',1,0)) AS May_rentals
 ,   SUM(IF(monthname(rental_date) = 'June',1,0))  AS June_rentals
 ,   SUM(IF(monthname(rental_date) = 'July',1,0)) AS July_rentals
 FROM rental
-WHERE rental_date BETWEEN '2005-05-01' AND '2005-08-01';
+WHERE rental_date BETWEEN '2005-05-01' AND '2005-08-01'; */
 
 /* SELECT a.first_name,
     a.last_name,
@@ -63,3 +63,23 @@ WHERE rental_date BETWEEN '2005-05-01' AND '2005-08-01';
 FROM actor a
 WHERE a.last_name LIKE 'S%'
     OR a.first_name LIKE 'S%'; */
+
+-- Exercise:-
+
+SELECT name
+,   CASE
+        WHEN name IN('English','Italian','French','German')
+        THEN 'latin1'
+        WHEN name IN('Japanese','Mandarin')
+        THEN 'utf8'
+        ELSE 'unknown'
+    END character_set
+FROM language;
+
+SELECT 
+    SUM(CASE WHEN rating ='G' THEN 1 ELSE 0 END) G
+,   SUM(CASE WHEN rating ='PG' THEN 1 ELSE 0 END) PG
+,   SUM(CASE WHEN rating ='PG-13' THEN 1 ELSE 0 END) "PG-13"
+,   SUM(CASE WHEN rating ='R' THEN 1 ELSE 0 END) R
+,   SUM(CASE WHEN rating ='NC-17' THEN 1 ELSE 0 END) "NC-17"
+FROM film;
