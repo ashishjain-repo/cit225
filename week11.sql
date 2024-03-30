@@ -87,6 +87,65 @@ SELECT
 ,   SUM(CASE WHEN rating ='NC-17' THEN 1 ELSE 0 END) "NC-17"
 FROM film;
 
+
+-- Exercise 10: 3
+SELECT
+    LEFT(last_name, 1) AS starts_with,
+    SUM(CASE WHEN active = 1 THEN 1 ELSE 0 END) AS active_count,
+    SUM(CASE WHEN active = 0 THEN 1 ELSE 0 END) AS inactive_count
+FROM customer
+GROUP BY starts_with
+ORDER BY starts_with;
+
+-- Exercise 10: 4
+WITH letters AS (
+    SELECT 'A' AS letter
+    UNION ALL SELECT 'B'
+    UNION ALL SELECT 'C'
+    UNION ALL SELECT 'D'
+    UNION ALL SELECT 'E'
+    UNION ALL SELECT 'F'
+    UNION ALL SELECT 'G'
+    UNION ALL SELECT 'H'
+    UNION ALL SELECT 'I'
+    UNION ALL SELECT 'J'
+    UNION ALL SELECT 'K'
+    UNION ALL SELECT 'L'
+    UNION ALL SELECT 'M'
+    UNION ALL SELECT 'N'
+    UNION ALL SELECT 'O'
+    UNION ALL SELECT 'P'
+    UNION ALL SELECT 'Q'
+    UNION ALL SELECT 'R'
+    UNION ALL SELECT 'S'
+    UNION ALL SELECT 'T'
+    UNION ALL SELECT 'U'
+    UNION ALL SELECT 'V'
+    UNION ALL SELECT 'W'
+    UNION ALL SELECT 'X'
+    UNION ALL SELECT 'Y'
+    UNION ALL SELECT 'Z'
+)
+
+SELECT l.letter AS starts_with,
+    SUM(CASE WHEN c.active = 1 THEN 1 ELSE 0 END) AS active_count,
+    SUM(CASE WHEN c.active = 0 THEN 1 ELSE 0 END) AS inactive_count
+FROM letters l
+LEFT JOIN customer c ON SUBSTR(c.last_name, 1, 1) = l.letter
+GROUP BY l.letter
+ORDER BY l.letter;
+
+
+-- Exercise 10: 5
+SELECT SUBSTR(last_name,1,1) AS starts_with
+,   SUM(CASE WHEN active = 1 THEN 1 ELSE 0 END) AS active_count
+,   SUM(CASE WHEN active = 0 THEN 1 ELSE 0 END) AS inactive_count
+FROM customer
+GROUP BY SUBSTR(last_name,1,1)
+HAVING SUM(CASE WHEN active = 1 THEN 1 ELSE 0 END) > 30
+ORDER BY 1;
+
+
 /* SELECT f.title
 ,CASE (SELECT COUNT(*) FROM inventory i
             WHERE  i.film_id = f.film_id)
@@ -99,12 +158,3 @@ FROM film;
     END AS availability
     FROM   film f
     WHERE  SUBSTR(f.title,1,2) BETWEEN 'AC' and 'AL'; */
-
--- Exercise 10: 5
-SELECT SUBSTR(last_name,1,1) AS starts_with
-,   SUM(CASE WHEN active = 1 THEN 1 ELSE 0 END) AS active_count
-,   SUM(CASE WHEN active = 0 THEN 1 ELSE 0 END) AS inactive_count
-FROM customer
-GROUP BY SUBSTR(last_name,1,1)
-HAVING SUM(CASE WHEN active = 1 THEN 1 ELSE 0 END) > 30
-ORDER BY 1;
