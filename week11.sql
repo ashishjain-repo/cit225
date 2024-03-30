@@ -66,6 +66,7 @@ WHERE a.last_name LIKE 'S%'
 
 -- Exercise:-
 
+-- Exercise 10: 1
 SELECT name
 ,   CASE
         WHEN name IN('English','Italian','French','German')
@@ -75,6 +76,8 @@ SELECT name
         ELSE 'unknown'
     END character_set
 FROM language;
+
+-- Exercise 10: 2
 
 SELECT 
     SUM(CASE WHEN rating ='G' THEN 1 ELSE 0 END) G
@@ -97,6 +100,7 @@ FROM film;
     FROM   film f
     WHERE  SUBSTR(f.title,1,2) BETWEEN 'AC' and 'AL'; */
 
+-- Exercise 10: 5
 SELECT SUBSTR(last_name,1,1) AS starts_with
 ,   SUM(CASE WHEN active = 1 THEN 1 ELSE 0 END) AS active_count
 ,   SUM(CASE WHEN active = 0 THEN 1 ELSE 0 END) AS inactive_count
