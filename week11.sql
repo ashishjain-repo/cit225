@@ -83,3 +83,24 @@ SELECT
 ,   SUM(CASE WHEN rating ='R' THEN 1 ELSE 0 END) R
 ,   SUM(CASE WHEN rating ='NC-17' THEN 1 ELSE 0 END) "NC-17"
 FROM film;
+
+/* SELECT f.title
+,CASE (SELECT COUNT(*) FROM inventory i
+            WHERE  i.film_id = f.film_id)
+            WHEN 0 THEN 'Out of Stock'
+            WHEN 1 THEN 'Scarce'
+            WHEN 2 THEN 'Scarce'
+            WHEN 3 THEN 'Available'
+            WHEN 4 THEN 'Available'
+            ELSE 'Common'
+    END AS availability
+    FROM   film f
+    WHERE  SUBSTR(f.title,1,2) BETWEEN 'AC' and 'AL'; */
+
+SELECT SUBSTR(last_name,1,1) AS starts_with
+,   SUM(CASE WHEN active = 1 THEN 1 ELSE 0 END) AS active_count
+,   SUM(CASE WHEN active = 0 THEN 1 ELSE 0 END) AS inactive_count
+FROM customer
+GROUP BY SUBSTR(last_name,1,1)
+HAVING SUM(CASE WHEN active = 1 THEN 1 ELSE 0 END) > 30
+ORDER BY 1;

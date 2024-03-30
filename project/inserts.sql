@@ -29,4 +29,6 @@ INSERT INTO author
 ,   author_dod
 )
 VALUES
-((SELECT country_id FROM country WHERE ))
+((SELECT country_id FROM country WHERE country_code = 'IN'),'Munshi','','Premchand','1880-07-31','1936-10-08'),
+((SELECT country_id FROM country WHERE country_code = 'EN'),'William','','Shakespeare','1564-04-26','1616-04-23'),
+((SELECT country_id FROM country WHERE country_code = 'SA'),'Herman','Charles','Bosman','1905-02-03','1951-10-14');
